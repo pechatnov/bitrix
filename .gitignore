@@ -1,6 +1,11 @@
 /.idea/
+/.gigaide/
 /bitrix/
 /upload/
+/local/vendor/
+/local/logs/
+/local/templates/main/build/
+/node_modules/
 
 *.txt
 *.log
