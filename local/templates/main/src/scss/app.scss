@@ -1,0 +1,455 @@
+// Корпоративный дизайн PV: строгий, профессиональный стиль
+// Bootstrap подключён через CDN
+
+@use "sass:color";
+
+// === Переменные ===
+$color-primary: #1e3a8a;      // Navy blue
+$color-secondary: #475569;    // Slate gray
+$color-accent: #2563eb;       // Bright blue для акцентов
+$color-text: #1e293b;         // Dark slate
+$color-text-muted: #64748b;   // Muted slate
+$color-border: #e2e8f0;       // Light border
+$color-bg-light: #f8fafc;     // Very light gray
+
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$border-radius: 4px;
+
+// === Общие стили ===
+body {
+  background-color: #ffffff;
+  font-family: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+// Контейнероподобные отступы для header/footer (как на bpmsoft.ru)
+header.pv-header,
+footer.py-5 {
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
+// Выравнивание navbar относительно контента
+.pv-navbar-container {
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
+// Выравнивание row относительно хедера
+.row > * {
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+}
+
+// === Header ===
+header.pv-header {
+  background-color: $color-primary;
+  box-shadow: $shadow-md;
+  border-bottom: 3px solid color.scale($color-primary, $lightness: -10%);
+
+  .navbar-brand {
+    color: #ffffff !important;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    .pv-logo-divider {
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0 0.5rem;
+    }
+
+    .pv-logo-text-muted {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 400;
+      text-transform: lowercase;
+    }
+  }
+
+  .nav-link {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-weight: 500;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+    padding: 0.5rem 1rem !important;
+
+    &:hover {
+      color: #ffffff !important;
+    }
+  }
+
+  .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    border-radius: $border-radius;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      box-shadow: none;
+    }
+  }
+
+  .btn-header {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: transparent;
+    transition: all 0.2s ease;
+    border-radius: $border-radius;
+    font-weight: 500;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.6);
+      color: #ffffff;
+    }
+  }
+}
+
+// === Hero Section ===
+.pv-hero {
+  background: linear-gradient(135deg, $color-primary 0%, color.scale($color-primary, $lightness: -20%) 100%);
+  color: #ffffff;
+  padding: 4rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+  .pv-hero-badge {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: $border-radius;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .lead {
+    font-size: 1.125rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+}
+
+// === Sections ===
+.pv-section {
+  margin-bottom: 4rem;
+  padding-top: 2rem;
+
+  // Если контейнер - не добавляем gutter padding
+  &:not(.container) {
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+  }
+}
+
+// === Cards ===
+.pv-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid $color-border;
+  border-radius: $border-radius;
+  box-shadow: $shadow-sm;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: color.scale($color-border, $lightness: -10%);
+    box-shadow: $shadow-md;
+  }
+}
+
+.pv-card-body {
+  flex: 1 1 auto;
+  padding: 1.5rem;
+}
+
+// === News Cards ===
+.pv-news-card {
+  @extend .pv-card;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  .pv-news-badge {
+    display: inline-block;
+    padding: 0.25rem 0.625rem;
+    background-color: $color-bg-light;
+    color: $color-secondary;
+    border: 1px solid $color-border;
+    border-radius: $border-radius;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .pv-news-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: $color-text;
+    line-height: 1.4;
+  }
+
+  .pv-news-preview {
+    color: $color-text-muted;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .pv-news-link {
+    color: $color-accent;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: color.scale($color-accent, $lightness: -20%);
+    }
+  }
+}
+
+// === Pagination ===
+.pagination {
+  gap: 0.25rem;
+}
+
+.page-item {
+  .page-link {
+    background-color: #fff;
+    border: 1px solid $color-border;
+    color: $color-text;
+    font-weight: 500;
+    padding: 0.5rem 0.875rem;
+    font-size: 0.9375rem;
+    border-radius: $border-radius;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $color-bg-light;
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+
+    &:focus {
+      box-shadow: none;
+      border-color: $color-primary;
+    }
+  }
+
+  &.active .page-link {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    color: #fff;
+
+    &:hover {
+      background-color: color.scale($color-primary, $lightness: -10%);
+      border-color: color.scale($color-primary, $lightness: -10%);
+      color: #fff;
+    }
+  }
+
+  &.disabled .page-link {
+    background-color: $color-bg-light;
+    border-color: $color-border;
+    color: $color-text-muted;
+    cursor: not-allowed;
+  }
+}
+
+// === List Group (Personal Cabinet) ===
+.list-group {
+  .list-group-item {
+    border: none;
+    border-bottom: 1px solid $color-border;
+    padding: 0.875rem 0;
+    color: $color-text;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: transparent;
+      color: $color-primary;
+    }
+
+    &.active {
+      background-color: transparent;
+      color: $color-primary;
+      font-weight: 600;
+      border-bottom-color: $color-primary;
+
+      .badge {
+        background-color: $color-primary !important;
+        color: #fff;
+      }
+    }
+  }
+}
+
+// === Buttons ===
+.pv-btn-primary {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: $color-accent;
+  border: 1px solid $color-accent;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
+  border-radius: $border-radius;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: color.scale($color-accent, $lightness: -15%);
+    border-color: color.scale($color-accent, $lightness: -15%);
+    color: #fff;
+  }
+}
+
+.pv-btn-outline {
+  display: inline-block;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $color-accent;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid $color-accent;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
+  border-radius: $border-radius;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $color-accent;
+    border-color: $color-accent;
+    color: #fff;
+  }
+
+  // Вариант для hero-секции (на темном фоне)
+  &.pv-btn-outline-light {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.6);
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
+}
+
+// === Form Controls ===
+.pv-form-control {
+  border-radius: $border-radius;
+  border: 1px solid $color-border;
+  padding: 0.625rem 0.875rem;
+  transition: all 0.2s ease;
+  font-size: 0.9375rem;
+
+  &:focus {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 3px rgba($color-accent, 0.1);
+  }
+}
+
+// === Section Headers ===
+.pv-section-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $color-border;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $color-text;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $color-text-muted;
+    margin-bottom: 0;
+  }
+}
+
+// === Footer ===
+footer {
+  background-color: $color-bg-light;
+  border-top: 1px solid $color-border;
+
+  h5, h6 {
+    color: $color-text;
+    font-weight: 600;
+  }
+
+  a {
+    color: $color-text-muted;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}
+
+// === Utilities ===
+.pv-shadow-sm {
+  box-shadow: $shadow-sm;
+}
+
+.pv-shadow-md {
+  box-shadow: $shadow-md;
+}
+
+.pv-shadow-lg {
+  box-shadow: $shadow-lg;
+}
+
+.pv-text-muted {
+  color: $color-text-muted;
+}
+
+.pv-border {
+  border: 1px solid $color-border;
+}
